@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Astro description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://sistemasfei.uv.mx/inicio/favicon.ico">
+    <title>Sistemas FEI</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+            color: #333333;
+        }
+        .navbar {
+            background-color: #f8f9fa;
+            box-shadow: 0 10px 20px -20px rgba(0, 0, 0, 0.5);
+        }
+        .logo-fei, .logo-uv {
+            width: 80px;
+            height: 80px;
+        }
+        .contenedor {
+            display: grid;
+            margin: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+            gap: 2rem;
+        }
+        .card {
+            max-width: 300px;
+            box-shadow: 0 10px 10px gray;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .card-body {
+            background-color: #18529d;
+            color: #ffffff;
+            padding: 1rem;
+        }
+        .card-title {
+            font-size: 1.25rem;
+        }
+        .btn {
+            background-color: #28a745;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" role="navigation">
+        <div class="container-fluid d-flex justify-content-around">
+            <a href="http://www.uv.mx/fei">
+                <img src="https://sistemasfei.uv.mx/inicio/_astro/logoFEI.CKAzzJnF_ZyfpCW.webp" class="logo-fei" alt="Logo FEI">
+            </a>
+            <h1>Portal de sistemas FEI</h1>
+            <a href="http://www.uv.mx">
+                <img src="https://sistemasfei.uv.mx/inicio/_astro/logoUV.gPBiyME4_N2yL.webp" class="logo-uv" alt="Logo Universidad Veracruzana">
+            </a>
+        </div>
+    </nav>
+    <main class="contenedor">
+        <article class="card">
+            <img src="https://sistemasfei.uv.mx/inicio/_astro/aulaFEI.Bfi36lLc_Z2aGaTO.webp" class="card-img-top" alt="Imagen del Sistema de Gestion de Claves de Aulas">
+            <div class="card-body">
+                <h5 class="card-title">Sistema de Gestion de Claves de Aulas</h5>
+                <a href="https://sistemasfei.uv.mx/aulaclase/" class="btn">Entrar</a>
+            </div>
+        </article>
+        <article class="card">
+            <img src="https://sistemasfei.uv.mx/inicio/_astro/edificioFEI.C5q6RF30_Z1jodpw.webp" class="card-img-top" alt="Imagen de MOODLE FEI">
+            <div class="card-body">
+                <h5 class="card-title">MOODLE FEI</h5>
+                <a href="https://sistemasfei.uv.mx/moodle/" class="btn">Entrar</a>
+            </div>
+        </article>
+        <article class="card">
+            <img src="https://sistemasfei.uv.mx/inicio/_astro/PEDPA.CaZEdBX2_Zm1Ox5.webp" class="card-img-top" alt="Imagen del Sistema de Estimulos al Desempeño del Personal Academico">
+            <div class="card-body">
+                <h5 class="card-title">Sistema de Estimulos al Desempeño del Personal Academico</h5>
+                <a href="https://sistemasfei.uv.mx/pedpa/" class="btn">Entrar</a>
+            </div>
+        </article>
+        <article class="card">
+            <img src="https://sistemasfei.uv.mx/inicio/_astro/sistemaAvisosFEI.webp" class="card-img-top" alt="Imagen del Sistema de Avisos">
+            <div class="card-body">
+                <h5 class="card-title">Sistema de Avisos</h5>
+                <a href="https://sistemasfei.uv.mx/bannersfei/" class="btn">Entrar</a>
+            </div>
+        </article>
+        <article class="card">
+            <img src="https://sistemasfei.uv.mx/inicio/_astro/formularioForms.webp" class="card-img-top" alt="Imagen del Formulario de Registro de Eventos">
+            <div class="card-body">
+                <h5 class="card-title">Formulario de Registro de Eventos</h5>
+                <a href="https://forms.office.com/pages/responsepage.aspx?id=UXaQPMbYpkyopGokJDDmU-mq0IRCUa9Ei8mq08oDurxUMDJJQkQ2S1RTRU4zRTQ0SVpINENHQTNWRi4u&amp;route=shorturl" class="btn">Entrar</a>
+            </div>
+        </article>
+        <article class="card">
+            <img src="https://sistemasfei.uv.mx/inicio/_astro/DashboardDesign.webp" class="card-img-top" alt="Imagen del Dashboard PBR">
+            <div class="card-body">
+                <h5 class="card-title">Dashboard PBR</h5>
+                <a href="https://sistemasfei.uv.mx/dashboardfei/login" class="btn">Entrar</a>
+            </div>
+        </article>
+        <article class="card">
+            <img src="https://sistemasfei.uv.mx/inicio/_astro/registroHorario.webp" class="card-img-top" alt="Imagen del Registro de Horarios de Tutoría">
+            <div class="card-body">
+                <h5 class="card-title">Registro de Horarios de Tutoría</h5>
+                <a href="https://sistemasfei.uv.mx/agendatutorias/" class="btn">Entrar</a>
+            </div>
+        </article>
+        <article class="card">
+            <img src="https://sistemasfei.uv.mx/inicio/_astro/sistemampa.webp" class="card-img-top" alt="Imagen del Módulo de Programación Académica">
+            <div class="card-body">
+                <h5 class="card-title">Módulo de Programación Académica</h5>
+                <a href="https://sistemasfei.uv.mx/apoyompa/" class="btn">Entrar</a>
+            </div>
+        </article>
+    </main>
+</body>
+</html>
