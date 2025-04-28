@@ -13,12 +13,13 @@
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="..." alt="{{logo}}" width="30" height="24" class="d-inline-block align-text-top">
+                <img src="..." alt="{{image description}}" width="30" height="24" class="d-inline-block align-text-top">
                 {{title}}
             </a>
         </div>
     </nav>
     <main>
+        <h1>{{main title}}</h1>
         <div class="content">
             <!-- Example of list of elements -->
             <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -26,7 +27,7 @@
                     <div class="card h-100">
                         <img src="..." class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">{{title}}</h5>
+                            <h2 class="card-title h5">{{title}}</h2>
                             <p class="card-text">{{text}}.</p>
                             <a href="..." class="btn btn-primary">{{text}}</a>
                         </div>
@@ -40,23 +41,23 @@
     </main>
     <!-- Create a sitemap in the footer -->
     <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
-        <div class="container px-4 px-md-3 text-body-secondary">
+        <div class="container px-4 px-md-3">
             <div class="row">
                 <div class="col-lg-3 mb-3">
                     <a class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none" href="/"
                         aria-label="...">
-                        <img width="50" src="...">
-                        <span class="fs-5">{{title}}</span>
+                        <img width="50" src="..." alt="{{image description}}">
+                        <span class="fs-5">{{title}}</span> 
                     </a>
                     <ul class="list-unstyled small">
                         <li class="mb-2">{{description of the site}}.</li>
                     </ul>
                 </div>
                 <div class="col-lg-9 mb-3">
-                    <h5>Site map</h5>
+                    <h2 class="h5">Mapa de sitio</h2>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="...">Home</a></li>
-                        <li class="mb-2"><a href="...">...</a></li>
+                        <li class="mb-2"><a class="link-body-emphasis" href="...">Home</a></li>
+                        <li class="mb-2"><a class="link-body-emphasis" href="...">...</a></li>
                     </ul>
                 </div>
             </div>

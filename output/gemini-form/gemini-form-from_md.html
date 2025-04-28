@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Inicio de sesión">
+    <meta name="keywords" content="login, SGCPE, Facultad de Estadística e Informática, UV">
+    <meta name="author" content="Your Name">
+    <meta name="robots" content="index, follow">
+    <title>Inicio de sesión</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        .container-fluid {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .row {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+        .col-md-6 {
+            position: relative;
+            width: 100%;
+            min-height: 1px;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .col-md-6 {
+                -ms-flex: 0 0 50%;
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+        }
+
+        .col-md-12 {
+            position: relative;
+            width: 100%;
+            min-height: 1px;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .col-md-12 {
+                -ms-flex: 0 0 100%;
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+
+        #colImg {
+            padding-left: 0;
+        }
+
+        img {
+            vertical-align: middle;
+            border-style: none;
+        }
+
+        .imgLogin {
+            width: 50%;
+            height: 100%;
+            position: fixed;
+            object-fit: cover; /* Ensure the image covers the area */
+        }
+
+        .pleca {
+            background: #0D47A1;
+            color: #fff;
+            font-size: 18px;
+            font-weight: normal;
+            height: 2em;
+            padding-right: 2em;
+            padding-left: 2em;
+        }
+
+        .float-right {
+            float: right!important;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            background-color: transparent;
+            -webkit-text-decoration-skip: objects;
+        }
+
+        @media (max-width: 767px) {
+            #colImg {
+                display: none;
+            }
+        }
+
+        #divIzq {
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 0.5em;
+            color: #18529D;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            margin-bottom: 0.5em;
+            color: #18529D;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1em;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5em;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.5em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 0.25em;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.5em 1em;
+            background-color: #18529D;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #0D47A1;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .pt-4 {
+            padding-top: 1.5em;
+        }
+
+        .mb-3 {
+            margin-bottom: 1em;
+        }
+
+        .text-secondary {
+            color: #6c757d;
+            font-size: 0.8em;
+        }
+
+        .justify-content-center {
+            justify-content: center;
+        }
+
+        .input-group {
+            position: relative;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -ms-flex-align: stretch;
+            align-items: stretch;
+            width: 100%;
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+
+        .borderRed {
+            --tw-border-opacity: 1;
+            border-color: rgba(239, 68, 68, var(--tw-border-opacity));
+        }
+
+        .borderGreen {
+            --tw-border-opacity: 1;
+            border-color: rgba(16, 185, 129, var(--tw-border-opacity));
+        }
+
+        @font-face {
+            font-family: GillSansBold;
+            src: url(https://sistemasfei.uv.mx/aulaclase/GillSans/Gill\ Sans\ Bold.otf);
+        }
+
+        @font-face {
+            font-family: GillSansRegular;
+            src: url(https://sistemasfei.uv.mx/aulaclase/GillSans/Gill\ Sans.otf);
+        }
+
+        h2,
+        h4 {
+            font-family: GillSansBold;
+        }
+
+        p {
+            font-family: GillSansRegular;
+        }
+
+        @media only screen and (max-width: 576px) {
+            .form {
+                padding-top: 10rem;
+            }
+        }
+
+        .custom-button {
+            background-color: #28AD56 !important;
+        }
+
+        .btn {
+            background-color: #18529D !important;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            background-color: transparent;
+            -webkit-text-decoration-skip: objects;
+            font-family: GillSansRegular;
+        }
+
+        .text {
+            padding-left: 10.625rem;
+        }
+
+        @media (max-width: 767px) {
+            .text {
+                padding-left: 6.3rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="sr-only">Skip to main content</a>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6" id="colImg">
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="https://sistemasfei.uv.mx/aulaclase/image_login.jpg" class="imgLogin row" alt="UV Building">
+                    </div>
+                </div>
+            </div>
+            <div id="divIzq" class="col-sm-12 col-md-6">
+                <div class="row float-right">
+                    <div class="pleca">
+                        <a href="https://www.uv.mx" style="color:#ffffff;">Universidad Veracruzana</a>
+                    </div>
+                </div>
+                <main id="main" style="width: 100%; height: 100%; display: table;">
+                    <div style="display: table-cell; vertical-align: middle;" class="pt-4">
+                        <h1 class="text-center pt-4" style="color:#18529D">Sistema de Gestión de Claves y Préstamo de Equipo (SGCPE)</h1>
+                        <h2 class="text-center">Facultad de Estadística e Informática</h2>
+                        <h2 class="text-center">Inicio de sesión</h2>
+                        <form action="userSearch.php" method="post" id="form">
+                            <div class="row justify-content-center">
+                                <div class="form-group">
+                                    <label for="user" class="h-3 text">Correo institucional:</label>
+                                    <div class="input-group row" style="width: 50%">
+                                        <input type="text" name="user" id="user" class="form-control" placeholder="Ingrese su correo institucional" aria-label="Correo institucional" aria-describedby="emailHelp">
+                                        <small id="emailHelp" class="text-secondary">Ejem: jhondoe@uv.mx</small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="h-3 text">Contraseña:</label>
+                                    <div class="input-group mb-3" style="width: 50%">
+                                        <input type="password" name="password" id="password" class="form-control" placeholder="Ingrese su contraseña" aria-label="Contraseña">
+                                    </div>
+                                </div>
+                                <div class="text-center pt-5">
+                                    <button type="submit" name="enviar" id="enviar" class="btn btn-primary">Iniciar sesión</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+    <script src="https://sistemasfei.uv.mx/aulaclase/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://sistemasfei.uv.mx/aulaclase/js/jquery-3.7.0.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#enviar").on("click", function (e) {
+                e.preventDefault();
+                validarFormulario();
+            })
+
+            $('#user').on("change", function () {
+                $(this).removeClass("borderGreen borderRed")
+            });
+
+            $('#password').on("change", function () {
+                $(this).removeClass("borderGreen borderRed")
+            });
+        });
+
+        function validarFormulario() {
+            var usuario = $('#user').val();
+            var clave = $('#password').val();
+            if (usuario.length == 0) {
+                Swal.fire({
+                    icon: 'error',
+                    html: '<p>Es necesario ingresar su correo/cuenta institucional.</p>',
+                    showConfirmButton: false,
+                    timer: 3500
+                });
+                $('#user').addClass("borderRed");
+                return false;
+            }
+            else {
+                $('#user').addClass("borderGreen");
+            }
+            if (clave.length == 0) {
+                Swal.fire({
+                    icon: 'error',
+                    html: '<p>Es necesario ingresar su password.</p>',
+                    showConfirmButton: false,
+                    timer: 3500
+                });
+                $('#password').addClass("borderRed");
+                return false;
+            }
+            else {
+                $('#password').addClass("borderGreen");
+            }
+            $("#form").submit();
+        }
+    </script>
+</body>
+</html>
