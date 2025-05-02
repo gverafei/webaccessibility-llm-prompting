@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title>Accessible University Demo Site - Inaccessible Version</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<link rel="icon" href="https://openassessittoolkit.github.io/accessible_u/images/favicon.ico" type="image/x-icon">
+  
+	<style>
+    /* Basic sr-only class for visually hidden elements */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Basic styles simulated from original CSS and Bootstrap */
+    body {
+      font-family: sans-serif; /* Assuming a standard font */
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .container {
+      width: 100%;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    @media (min-width: 576px) { .container { max-width: 540px; } }
+    @media (min-width: 768px) { .container { max-width: 720px; } }
+    @media (min-width: 992px) { .container { max-width: 960px; } }
+    @media (min-width: 1200px) { .container { max-width: 1140px; } }
+
+    .clearfix::after {
+      display: block;
+      clear: both;
+      content: "";
+    }
+
+    .float-right { float: right !important; }
+    .float-left { float: left !important; }
+
+    .list-unstyled {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .utility-menu li {
+      display: inline-block;
+      margin-left: 15px;
+    }
+
+    .logo-link {
+      display: inline-block;
+    }
+
+    #logo {
+      max-width: 100%; /* Make logo responsive */
+      height: auto;
+    }
+
+    .navbar {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: .5rem 1rem;
+    }
+
+    .navbar-expand-lg {
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+    }
+
+    .navbar-dark .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .navbar-toggler {
+      padding: .25rem .75rem;
+      font-size: 1.25rem;
+      line-height: 1;
+      background-color: transparent;
+      border: 1px solid transparent;
+      border-radius: .25rem;
+    }
+
+    .navbar-collapse {
+      display: flex !important; /* Assuming it's expanded by default on large screens */
+      flex-basis: auto;
+      flex-grow: 1;
+      align-items: center;
+    }
+
+    .navbar-nav {
+      display: flex;
+      flex-direction: row; /* Horizontal on large screens */
+      padding-left: 0;
+      margin-bottom: 0;
+      list-style: none;
+    }
+
+    .mr-auto { margin-right: auto !important; }
+
+    .nav-item {
+      margin-right: 1rem; /* Spacing between nav items */
+    }
+
+    .nav-link {
+      display: block;
+      padding: .5rem 1rem;
+      /* Adjusted for contrast */
+      color: #fff; /* White text on dark background */
+    }
+
+    .nav-link:hover {
+      /* Adjusted for contrast */
+      color: #ccc; /* Lighter white on hover */
+    }
+
+    .nav-item.active .nav-link {
+      /* Adjusted for contrast and visual indicator */
+      color: #fff; /* White text */
+      font-weight: bold; /* Add visual indicator for active */
+    }
+
+    .dropdown-menu {
+      position: absolute; /* Needs JS for proper positioning and display */
+      top: 100%;
+      left: 0;
+      z-index: 1000;
+      display: none; /* Hidden by default */
+      float: left;
+      min-width: 10rem;
+      padding: .5rem 0;
+      margin: .125rem 0 0;
+      font-size: 1rem;
+      color: #212529; /* Check contrast */
+      text-align: left;
+      list-style: none;
+      background-color: #fff; /* Check contrast */
+      background-clip: padding-box;
+      border: 1px solid rgba(0, 0, 0, .15);
+      border-radius: .25rem;
+    }
+
+    .dropdown-item {
+      display: block;
+      width: 100%;
+      padding: .25rem 1.5rem;
+      clear: both;
+      font-weight: 400;
+      color: #212529; /* Check contrast */
+      text-align: inherit;
+      white-space: nowrap;
+      background-color: transparent;
+      border: 0;
+    }
+
+    .dropdown-item:hover {
+      color: #16181b; /* Check contrast */
+      text-decoration: none;
+      background-color: #f8f9fa; /* Check contrast */
+    }
+
+    .form-inline {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+    }
+
+    .mr-sm-2 { margin-right: .5rem !important; }
+    .my-2 { margin-top: .5rem !important; margin-bottom: .5rem !important; }
+    .my-lg-0 { margin-top: 0 !important; margin-bottom: 0 !important; }
+
+    .form-control {
+      display: block;
+      width: 100%;
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #495057; /* Check contrast */
+      background-color: #fff; /* Check contrast */
+      background-clip: padding-box;
+      border: 1px solid #ced4da; /* Check contrast */
+      border-radius: .25rem;
+      transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+
+    .btn {
+      display: inline-block;
+      font-weight: 400;
+      color: #212529; /* Check contrast */
+      text-align: center;
+      vertical-align: middle;
+      cursor: pointer;
+      user-select: none;
+      background-color: transparent;
+      border: 1px solid transparent;
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      border-radius: .25rem;
+      transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+
+    .btn-success {
+      /* Adjusted for contrast */
+      color: #fff; /* White text */
+      background-color: #1e7e34; /* Darker green */
+      border-color: #1e7e34;
+    }
+
+    .btn-success:hover {
+      background-color: #155724; /* Even darker green */
+      border-color: #155724;
+    }
+
+    .btn-primary {
+      /* Adjusted for contrast */
+      color: #fff; /* White text */
+      background-color: #004085; /* Darker blue */
+      border-color: #004085;
+    }
+
+    .btn-primary:hover {
+      background-color: #002752; /* Even darker blue */
+      border-color: #002752;
+    }
+
+    .btn-lg {
+      padding: .5rem 1rem;
+      font-size: 1.25rem;
+      line-height: 1.5;
+      border-radius: .3rem;
+    }
+
+    .btn-block {
+      display: block;
+      width: 100%;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-right: -15px;
+      margin-left: -15px;
+    }
+
+    .col-md-8, .col-md-4 {
+      position: relative;
+      width: 100%;
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+
+    @media (min-width: 768px) {
+      .col-md-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+      .col-md-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+    }
+
+    .mb-3 { margin-bottom: 1rem !important; }
+    .mt-2 { margin-top: .5rem !important; }
+
+    /* Carousel styles (simplified) */
+    #carousel {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 20px; /* Added margin */
+    }
+
+    #carousel > div:first-child {
+        position: relative;
+    }
+
+    #carousel .slide {
+      display: none; /* Hidden by default */
+    }
+
+    #carousel .slide.current {
+      display: block; /* Show current slide */
+    }
+
+    #carousel img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .btn-prev, .btn-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5); /* Check contrast */
+      color: white; /* Check contrast */
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 10;
+    }
+
+    .btn-prev { left: 0; }
+    .btn-next { right: 0; }
+
+    .lentils {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      z-index: 10;
+    }
+
+    .lentils li {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 0 5px;
+      background: rgba(255,255,255,0.5); /* Check contrast */
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .lentils li.active {
+      background: white; /* Check contrast */
+    }
+
+    .section { margin-bottom: 20px; }
+
+    /* Heading styles */
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        line-height: 1.2;
+    }
+
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; margin-bottom: 1rem; }
+    h3 { font-size: 1.75rem; margin-bottom: 1rem; }
+    h4 { font-size: 1.5rem; }
+    h5 { font-size: 1.25rem; }
+    h6 { font-size: 1rem; }
+
+    p { margin-top: 0; margin-bottom: 1rem; }
+
+    /* Image float style */
+    img[style*="float:left"] {
+      float: left;
+      margin-right: 10px;
+      max-width: 200px; /* Keep original max-width */
+      height: auto; /* Ensure aspect ratio is maintained */
+    }
+
+    /* Table styles */
+    .table {
+      width: 100%;
+      margin-bottom: 1rem;
+      color: #212529; /* Check contrast */
+      border-collapse: collapse;
+    }
+
+    .table th, .table td {
+      padding: .75rem;
+      vertical-align: top;
+      border-top: 1px solid #dee2e6; /* Check contrast */
+    }
+
+    .table thead th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #dee2e6; /* Check contrast */
+    }
+
+    .table tbody + tbody {
+      border-top: 2px solid #dee2e6; /* Check contrast */
+    }
+
+    /* Events box */
+    .box {
+      border: 1px solid #ccc; /* Check contrast */
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    .events h3 { margin-top: 0; } /* Adjust heading margin in box */
+    .events h4, .events h5 { margin-bottom: 0.25rem; } /* Adjust date/title margin */
+
+    .hr {
+      display: block;
+      height: 1px;
+      border: 0;
+      border-top: 1px solid #ccc; /* Check contrast */
+      margin: 1em 0;
+      padding: 0;
+    }
+
+    /* Form styles */
+    #appForm h3 { margin-top: 0; } /* Adjust heading margin in box */
+
+    .reqExample {
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    /* Style for required fields - add visual indicator */
+    .form-group.required label {
+        font-weight: bold; /* Add bolding */
+        /* Adjusted for contrast */
+        color: #004085; /* WCAG AA compliant blue on white */
+    }
+
+    .form-group.required label::after {
+      content: " *"; /* Add asterisk */
+      color: red; /* Or another contrasting color */
+    }
+
+    #error {
+      color: red; /* Check contrast */
+      margin-bottom: 1rem;
+    }
+
+    #majors {
+      margin-top: 0.5rem;
+    }
+
+    .major {
+      margin-bottom: 0.5rem;
+    }
+
+    #captcha img {
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    /* Footer styles */
+    footer {
+      background-color: #f8f9fa; /* Example light background, check contrast */
+      color: #212529; /* Check contrast */
+      padding: 3rem 0; /* Added padding */
+    }
+
+    footer .container { padding: 0 15px; }
+
+    footer .social li {
+      display: inline-block;
+      margin-left: 10px;
+    }
+
+    footer nav ul {
+      margin-bottom: 1rem;
+    }
+
+    footer nav li {
+      margin-bottom: 0.5rem;
+    }
+
+    footer hr {
+      border-top: 1px solid rgba(0, 0, 0, .1); /* Check contrast */
+    }
+
+    footer .sub-footer {
+      font-size: 0.9rem;
+      /* Adjusted for contrast */
+      color: #212529; /* Dark text */
+    }
+
+    #ccLogo {
+      float: left;
+      margin-right: 10px;
+    }
+
+    /* Modal styles */
+    #modalMask {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7); /* Check contrast */
+      z-index: 1040;
+      display: none; /* Hidden by default */
+    }
+
+    #modalContent {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white; /* Check contrast */
+      color: #212529; /* Check contrast */
+      padding: 20px;
+      border-radius: 5px;
+      z-index: 1050;
+      display: none; /* Hidden by default */
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, .5); /* Check contrast */
+      outline: none; /* Remove default outline */
+    }
+
+    .modalHeading {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+
+    #modalXButton {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 5px; /* Added padding for click area */
+    }
+
+    #modalContent ol {
+      margin-bottom: 1rem;
+    }
+
+    #modalOkButton {
+      display: block;
+      margin-top: 1rem;
+    }
+
+    /* Ensure focus outlines are visible */
+    :focus {
+      outline: 2px solid blue; /* Example focus outline */
+      outline-offset: 2px;
+    }
+
+    /* Link color adjustment for contrast */
+    a {
+        /* Adjusted for contrast */
+        color: #004085; /* WCAG AA compliant blue on white */
+    }
+    a:hover,
+    a:focus {
+        color: #002752; /* Darker blue on hover/focus */
+        text-decoration: underline; /* Ensure underline on hover/focus */
+    }
+
+    /* Ensure links in dark backgrounds (like footer nav) have sufficient contrast */
+    /* Assuming footer nav links are on #f8f9fa, the #004085 color works. */
+
+    /* Added margin below navbar */
+    .navbar + br { display: none; } /* Hide original br */
+    .navbar { margin-bottom: 1.5rem; }
+
+  </style>
+
+	<script src="https://openassessittoolkit.github.io/accessible_u/scripts/before-menu.js"></script>
+	<script src="https://openassessittoolkit.github.io/accessible_u/scripts/before-form.js"></script>
+	<script src="https://openassessittoolkit.github.io/accessible_u/scripts/before-modal.js"></script>
+	<script src="https://openassessittoolkit.github.io/accessible_u/scripts/before-hero.js"></script>
+</head>
+<body>
+
+  <a href="#main" class="sr-only">Skip to main content</a>
+
+  <div id="content">
+
+    <header role="banner" class="container clearfix">
+      <nav aria-label="version" class="float-right">
+        <span class="float-left">Examples:</span>
+        <ul class="utility-menu float-left list-unstyled">
+          <li><a href="https://openassessittoolkit.github.io/accessible_u/before_u.html" aria-current="page" aria-label="before version with problems">Before</a></li>
+          <li><a href="https://openassessittoolkit.github.io/accessible_u/after_u.html" aria-label="after version with fixes">After</a></li>
+        </ul>
+      </nav>
+      <div class="logo-link">
+        <h1>
+          <a href="https://openassessittoolkit.github.io/accessible_u/">
+            <img id="logo" src="https://openassessittoolkit.github.io/accessible_u/images/8675309-l-o-g-o-before.png" width="950" height="230" alt="Accessible University Logo">
+            <span class="sr-only">Accessible University Home</span>
+          </a>
+        </h1>
+      </div>
+    </header>
+
+    <nav role="navigation" class="navbar navbar-expand-lg navbar-dark bg-dark bg-primary md-3">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#" aria-current="page">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  About
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                <li><a class="dropdown-item" href="#">News</a></li>
+                <li><a class="dropdown-item" href="#">Governance</a></li>
+                <li><a class="dropdown-item" href="#">Diversity</a></li>
+                <li><a class="dropdown-item" href="#">Contact Us</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="academicsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Academics
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="academicsDropdown">
+                <li><a class="dropdown-item" href="#">Degree Programs</a></li>
+                <li><a class="dropdown-item" href="#">AU Faculty</a></li>
+                <li><a class="dropdown-item" href="#">Distance Learning</a></li>
+                <li><a class="dropdown-item" href="#">Libraries</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="admissionsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Admissions
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="admissionsDropdown">
+                <li><a class="dropdown-item" href="#">Undergraduate</a></li>
+                <li><a class="dropdown-item" href="#">Graduate</a></li>
+                <li><a class="dropdown-item" href="#">Tuition</a></li>
+                <li><a class="dropdown-item" href="#">Financial Aid</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                  Visitors
+              </a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0" role="search">
+            <label for="search-input" class="sr-only">Search</label>
+            <input id="search-input" class="form-control mr-sm-2" type="search" placeholder="Search">
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Go</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <main id="main" role="main" class="container">
+      <div class="row">
+          <div class="col-md-8">
+            <section class="mb-3">
+
+              <div id="carousel" role="region" aria-roledescription="carousel" aria-label="Image carousel">
+                <div>
+                  <div class="slide current" role="group" aria-roledescription="slide" aria-label="1 of 3">
+                    <a href="somepage.html?ref=Slide%201">
+                      <img src="https://openassessittoolkit.github.io/accessible_u/images/8675309-before_brass_band.jpg" width="700" height="470" alt="Students playing instruments in a brass band">
+                    </a>
+                  </div>
+                  <div class="slide" role="group" aria-roledescription="slide" aria-label="2 of 3" aria-hidden="true">
+                    <a href="somepage.html?ref=Slide%202">
+                      <img src="https://openassessittoolkit.github.io/accessible_u/images/8675309-before_articulated_bus.jpg" alt="Articulated bus on campus">
+                    </a>
+                  </div>
+                  <div class="slide" role="group" aria-roledescription="slide" aria-label="3 of 3" aria-hidden="true">
+                    <a href="somepage.html?ref=Slide%203">
+                      <img src="https://openassessittoolkit.github.io/accessible_u/images/8675309-before_construction.jpg" alt="Construction site on campus">
+                    </a>
+                  </div>
+                </div>
+              <div>
+                <button class="btn-prev" aria-label="Previous slide"><img src="https://openassessittoolkit.github.io/accessible_u/images/8675309-arrow-left.png" width="70" height="120" alt=""></button>
+                <button class="btn-next" aria-label="Next slide"><img src="https://openassessittoolkit.github.io/accessible_u/images/8675309-arrow-right.png" width="70" height="120" alt=""></button>
+              </div>
+              <ul class="lentils" role="tablist">
+                <li role="tab" data-slide="0" class="active" aria-label="Go to slide 1" aria-selected="true"></li>
+                <li role="tab" data-slide="1" aria-label="Go to slide 2" aria-selected="false"></li>
+                <li role="tab" data-slide="2" aria-label="Go to slide 3" aria-selected="false"></li>
+              </ul>
+            </div>
+
+              <section class="section">
+                <h2>Welcome!</h2>
+                <p>Accessible University (AU) is a <a href="https://www.merriam-webster.com/dictionary/fictional">fictional</a> <a href="https://en.wikipedia.org/wiki/University">university</a>, and this is its
+                  fictional home page. This page is designed to demonstrate a variety of
+                  common web design <a href="https://www.merriam-webster.com/dictionary/problems">problems</a> that result in visitors with disabilities
+                  being unable to access the content or features of a web page.
+                  Although the heading at the top of this section of the page
+                  suggests that AU may be a welcoming institution,
+                  the inaccessible design of this page sends the opposite message.
+                </p>
+              </section>
+
+              <section class="section">
+                <h2 lang="es">¡Bienvenido!</h2>
+                <p lang="es">Accesible Universidad (UA) es una universidad ficticia, y esta es su
+                  página de ficción. Esta página está diseñada para demostrar una variedad de
+                  común de diseño web que se traducen en problemas de los visitantes con discapacidad
+                  no poder acceder al contenido o las características de una página web.
+                  Aunque el título en la parte superior de esta sección de la página
+                  sugiere que AU puede ser una institución de bienvenida,
+                  el diseño inaccesible de esta página envía el mensaje opuesto.
+                </p>
+              </section>
+
+              <section class="section">
+                <h2>Can you spot the barriers?</h2>
+                <p><img style="float:left;max-width:200px;margin-right:10px" src="https://openassessittoolkit.github.io/accessible_u/images/8675309-block.jpg" width="300" height="169" alt=""> There are at least 18 accessibility issues on this page.
+                To see a list of all known issues, <a href="https://openassessittoolkit.github.io/accessible_u/issues.html">see a list of all known issues</a>.
+                To see a more accessible version of this same page, <a href="https://openassessittoolkit.github.io/accessible_u/after_u.html">see a more accessible version of this same page</a>.
+                To view a popup list of accessibility issues:</p>
+                <button class="btn btn-primary" type="button" id="viewIssuesButton">View popup list of accessibility issues</button>
+              </section>
+
+              <section class="section">
+                <h2>AU Enrollment Trends</h2>
+                <table id="enrollment" class="table">
+                  <caption>AU Enrollment Trends</caption>
+                  <thead>
+                    <tr>
+                      <td rowspan="2"></td>
+                      <th scope="colgroup" colspan="5">Last year</th>
+                      <th scope="colgroup" colspan="5">This year</th>
+                    </tr>
+                    <tr>
+                      <th scope="col">CS</th>
+                      <th scope="col">Eng</th>
+                      <th scope="col">Eco</th>
+                      <th scope="col">Phy</th>
+                      <th scope="col">Psy</th>
+                      <th scope="col">CS</th>
+                      <th scope="col">Eng</th>
+                      <th scope="col">Eco</th>
+                      <th scope="col">Phy</th>
+                      <th scope="col">Psy</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Total</th>
+                      <td>84</td>
+                      <td>126</td>
+                      <td>43</td>
+                      <td>32</td>
+                      <td>112</td>
+                      <td>82</td>
+                      <td>140</td>
+                      <td>45</td>
+                      <td>34</td>
+                      <td>101</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">% Male</th>
+                      <td>59</td>
+                      <td>84</td>
+                      <td>73</td>
+                      <td>69</td>
+                      <td>20</td>
+                      <td>87</td>
+                      <td>80</td>
+                      <td>69</td>
+                      <td>69</td>
+                      <td>22</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">% Female</th>
+                      <td>41</td>
+                      <td>16</td>
+                      <td>27</td>
+                      <td>31</td>
+                      <td>80</td>
+                      <td>13</td>
+                      <td>20</td>
+                      <td>31</td>
+                      <td>31</td>
+                      <td>78</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+
+            </section>
+          </div>
+
+          <aside class="col-md-4">
+            <section class="mb-3">
+
+              <div class="events box">
+                <h3>Events</h3>
+
+                <h4>December 1</h4>
+                <h5><a href="#">A great holiday event</a></h5>
+
+                <p>Don't miss this event.</p>
+                <img class="hr" src="https://openassessittoolkit.github.io/accessible_u/images/hr.png" alt="">
+                <h4>December 31</h4>
+                <h5><a href="#">New years eve party</a></h5>
+                <p>Ring in the new year with your friends</p>
+                <img class="hr" src="https://openassessittoolkit.github.io/accessible_u/images/hr.png" alt="">
+              </div>
+
+              <div id="appForm" class="form-group box">
+
+                <h3>Start your application</h3>
+                  <p class="required reqExample">(required fields are in blue and marked with an asterisk)</p>
+
+                <form action="#" method="post">
+
+                  <!-- container for displaying form errors -->
+                  <div id="error" aria-live="polite"></div>
+
+                  <div class="required form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" class="form-control" required aria-required="true">
+                  </div>
+                  <div class="required form-group">
+                    <label for="email">Email:</label>
+                    <input type="text" name="email" id="email" class="form-control" required aria-required="true">
+                  </div>
+                  <div class="form-group">
+                    <label for="country">Country:</label>
+                    <input type="text" name="country" id="country" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <legend>Desired major(s):</legend>
+                      <div id="majors">
+                        <div class="major"><input type="checkbox" id="majorCS" name="majorCS"><label for="majorCS"> Computer Science</label></div>
+                        <div class="major"><input type="checkbox" id="majorEng" name="majorEng"><label for="majorEng"> Engineering</label></div>
+                        <div class="major"><input type="checkbox" id="majorEco" name="majorEco"><label for="majorEco"> Economics</label></div>
+                        <div class="major"><input type="checkbox" id="majorPhy" name="majorPhy"><label for="majorPhy"> Physics</label></div>
+                        <div class="major"><input type="checkbox" id="majorPsy" name="majorPsy"><label for="majorPsy"> Psychology</label></div>
+                      </div>
+                    </fieldset>
+                  </div>
+                  <div id="captcha">
+                    <p>Security Test</p>
+                    <p id="captcha-instructions">Please enter the two words you see below, separated by a space</p>
+                    <label for="captcha-input" class="sr-only">Enter the words from the image</label>
+                    <input type="text" name="captcha" id="captcha-input" aria-describedby="captcha-instructions">
+                    <img src="https://openassessittoolkit.github.io/accessible_u/images/captcha.png" width="186" height="56" alt="Image contains two words for the security test">
+                  </div>
+
+                  <div class="mt-2">
+                    <input id="submit" type="submit" name="submit" value="Submit" class="btn btn-lg btn-success btn-block">
+                  </div>
+
+                </form>
+
+              </div>
+
+            </section>
+          </aside>
+
+        </div>
+    </main>
+
+    <footer role="contentinfo">
+      <div class="container">
+        <ul class="social float-right list-unstyled">
+          <li><a href="https://facebook.com"><img src="https://openassessittoolkit.github.io/accessible_u/images/8675309-social-facebook.png" alt="Facebook"></a></li>
+          <li><a href="https://twitter.com"><img src="https://openassessittoolkit.github.io/accessible_u/images/8675309-social-twitter.png" alt="Twitter"></a></li>
+        </ul>
+        <nav aria-label="Footer navigation">
+          <ul class="list-unstyled">
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Directions</a></li>
+          </ul>
+        </nav>
+        <hr>
+      </div>
+      <div class="container sub-footer">
+        <div id="ccLogo">
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+        </div>
+        <p>Accessible University by <a href="http://washington.edu/accesscomputing/AU">University of Washington</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+        <p>This product was originally developed with support from the National Institute on Disability and Rehabilitation Research of the U.S. Department of Education (grant #H133D010306), and has been subsequently updated and maintained with support from the National Science Foundation (grant #CNS-054061S). The contents do not necessarily represent the policies of the U.S. federal government, and you should not assume their endorsement.</p>
+        <p>Subsequent modifications to this instance have been made by Duke University to modernize the look, feel, and code.</p>
+      </div>
+    </footer>
+
+  </div><!--end #content-->
+
+  <!--containers for displaying modal content-->
+  <div id="modalMask" aria-hidden="true"></div>
+
+  <div id="modalContent" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+    <h2 id="modalHeading" class="modalHeading">List of accessibility issues</h2>
+    <button type="button" id="modalXButton" aria-label="Close modal">x</button>
+    <p>Note: This popup does not receive keyboard focus. The cursor continues to tab down the page behind the it. As a result keyboard-only users cannot dismiss it and screen reader users will not be alerted to it's presence. They will not be able to close it; rendering the webpage useless.</p>
+    <p>On the inaccessible version of this page the following errors can be found:</p>
+    <ol>
+      <li>Missing bypass block <br>(skip-to main content).</li>
+      <li>Improper use of headings</li>
+      <li>Images of text</li>
+      <li>No alternate text on informative images</li>
+      <li>Missing or excessive alternate text on decorative images</li>
+      <li>Insufficient color contrast</li>
+      <li>Insufficient visual cues</li>
+      <li>Inaccessible dropdown menu</li>
+      <li>Redundant, uninformative link text</li>
+      <li>Color used to communicate information</li>
+      <li>Language not specified</li>
+      <li>Missing accessible form markup</li>
+      <li>Inaccessible CAPTCHA</li>
+      <li>Inaccessible validation</li>
+      <li>Missing ARIA landmark roles</li>
+      <li>Inaccessible modal window</li>
+      <li>Inaccessible carousel</li>
+      <li>Missing accessible table markup</li>
+      <li>HTML fails validation</li>
+    </ol>
+    <button class="btn btn-primary" type="button" id="modalOkButton" aria-label="Close modal">OK</button>
+  </div>
+
+
+</body></html>
