@@ -1,11 +1,11 @@
 # Accessible Web Content Generation Using LLMs: An Empirical Study on Prompting Strategies and Template-Guided Remediation
 
-This repository contains the source code and associated files to replicate the experiments described in our submission to *IEEE Latin America Transactions* (Submission ID: XXXX). This README provides an overview of the repository structure, manuscript details, and usage instructions.
+This repository contains the source code and associated files to replicate the experiments described in our submission to *IEEE Latin America Transactions* (Submission ID: 9994). This README provides an overview of the repository structure, manuscript details, and usage instructions.
 
 ## Manuscript Information
 
 **Title:** Accessible Web Content Generation Using LLMs: An Empirical Study on Prompting Strategies and Template-Guided Remediation  
-**Submission ID:** XXXX  
+**Submission ID:** 9994
 
 ### Authors
 
