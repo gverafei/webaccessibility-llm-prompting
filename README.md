@@ -1,5 +1,7 @@
 # Accessible Web Content Generation Using LLMs: An Empirical Study on Prompting Strategies and Template-Guided Remediation
 
+<center><img src="code/images/experiment-flow.jpg" style="margin:a6to; width:70%"/></center>
+
 This repository contains the source code and associated files to replicate the experiments described in our submission to *IEEE Latin America Transactions* (Submission ID: 9994). This README provides an overview of the repository structure, manuscript details, and usage instructions.
 
 ## Manuscript Information
