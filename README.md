@@ -1,5 +1,6 @@
 # Accessible Web Content Generation Using LLMs: An Empirical Study on Prompting Strategies and Template-Guided Remediation
 
+
 <center><img src="code/images/experiment-flow.jpg" style="margin:a6to; width:100%"/></center>
 
 This repository contains the source code and associated files to replicate the experiments described in our submission to *IEEE Latin America Transactions* (Submission ID: 9994). This README provides an overview of the repository structure, manuscript details, and usage instructions.
@@ -35,7 +36,7 @@ The repository is organized as follows:
   
 A Python environment capable of running Jupyter Notebooks is required. Supported options include:
 
-- Visual Studio Code (offline)
+- Visual Studio Code (local)
 - Jupyter Notebook (local or online)
 - Google Colab (online)
 
