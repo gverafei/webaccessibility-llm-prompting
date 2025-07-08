@@ -40,6 +40,22 @@ A Python environment capable of running Jupyter Notebooks is required. Supported
 - Jupyter Notebook (local or online)
 - Google Colab (online)
 
+## Requirements
+
+To run the experiment successfully, you need the following API keys:
+
+1. **OpenAI API key** – stored in the environment variable `OPENAI_API_KEY`.
+2. **Google AI API key** – stored in the environment variable `GOOGLE_API_KEY`.
+3. **Firecrawl API key** – stored in the environment variable `FIRECRAWL_API_KEY`.
+
+We recommend creating a `.env` file in the root directory to securely store these keys. The notebook is configured to automatically load the variables from this file at runtime. Use the following format:
+
+```
+OPENAI_API_KEY=your_openai_api_key_here
+GOOGLE_API_KEY=your_google_api_key_here
+FIRECRAWL_API_KEY=your_firecrawl_api_key_here
+```
+
 ## Usage Instructions
 
 1. Open `llm-prompt.ipynb` in your chosen notebook environment.
