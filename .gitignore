@@ -176,4 +176,3 @@ cython_debug/
 
 # Mac settings
 .DS_Store
-.hidden
