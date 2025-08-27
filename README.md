@@ -1,7 +1,5 @@
 # Accessible Web Content Generation Using LLMs: An Empirical Study on Prompting Strategies and Template-Guided Remediation
 
-# Accessible Web Content Generation Using LLMs: An Empirical Study on Prompting Strategies and Template-Guided Remediation
-
 1. [Before (UW)](https://www.washington.edu/accesscomputing/AU/before.html)
 2. [After (UW)](https://www.washington.edu/accesscomputing/AU/after.html)
 3. [GPT Site 1 - From HTML](https://gverafei.github.io/webaccessibility-llm-prompting/code/output/gpt-site1/1-from_html.html)
