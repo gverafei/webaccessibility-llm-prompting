@@ -65,7 +65,7 @@ FIRECRAWL_API_KEY=your_firecrawl_api_key_here
 
 For full details on the methodology and results, refer to the associated article.
 
-## List of evaluated pages
+## Summary of the variants obtained from experiments
 
 | ID   | Variant                  | Link          |
 |------|--------------------------|---------------|
