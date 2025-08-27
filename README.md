@@ -1,4 +1,4 @@
-# Accessible Web Content Generation Using LLMs: An Empirical Study on Prompting Strategies and Template-Guided Remediation
+
 
 1. [Before (UW)](https://www.washington.edu/accesscomputing/AU/before.html)
 2. [After (UW)](https://www.washington.edu/accesscomputing/AU/after.html)
